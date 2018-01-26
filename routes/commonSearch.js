@@ -126,6 +126,7 @@ router.post('/search', function(req, response){
                                 var resArr=data.hits.hits;
                                 for(i=0;i<resArr.length;i++){
                                     result=resArr[i]._source;
+                                    result.id=resArr[i]._id;
                                 }
                                 response.status(200).send({"status": true, "result": result,"message":"Record found"}) ;
                             }
@@ -163,6 +164,7 @@ router.post('/searchAll', function(req, response){
                                 var resArr=data.hits.hits;
                                 for(i=0;i<resArr.length;i++){
                                     result[i]=resArr[i]._source;
+                                    result[i].id=resArr[i]._id;
                                 }
                                 response.status(200).send({"status": true, "result": result});
                             }
